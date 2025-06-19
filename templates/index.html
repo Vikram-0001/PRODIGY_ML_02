@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Segmentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Customer Segmentation Using K-Means</h1>
+
+    <div class="container">
+        <div class="left-panel">
+            <form method="POST">
+                <label>Gender:
+                    <select name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </label><br><br>
+
+                <label>Age: <input type="number" name="age" required></label><br><br>
+                <label>Annual Income (k$): <input type="number" name="income" required></label><br><br>
+                <label>Spending Score (1–100): <input type="number" name="score" required></label><br><br>
+
+                <button type="submit">Predict Cluster</button>
+            </form>
+
+            {% if prediction is not none %}
+                <h2 class="prediction">Predicted Cluster: {{ prediction }}</h2>
+            {% endif %}
+        </div>
+
+        <div class="right-panel">
+            <img src="{{ image_path }}" alt="KMeans Clusters">
+        </div>
+    </div>
+
+    <div class="footer">Made with ❤️ using Flask & K-Means</div>
+</body>
+</html>
